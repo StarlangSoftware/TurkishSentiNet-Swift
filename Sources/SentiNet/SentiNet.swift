@@ -32,7 +32,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
         parser.parse()
     }
     
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if (elementName == "ID") {
             value = ""
         } else if (elementName == "PSCORE") {
@@ -42,11 +42,11 @@ public class SentiNet : NSObject, XMLParserDelegate{
         }
     }
     
-    func parser(_ parser: XMLParser, foundCharacters string: String){
+    public func parser(_ parser: XMLParser, foundCharacters string: String){
         value = value + string
     }
     
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
+    public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
         if (elementName == "SYNSET"){
             self.__sentiSynSetList[id] = SentiSynSet(_id: id, positiveScore: pScore, negativeScore: nScore)
         } else if (elementName == "PSCORE"){
