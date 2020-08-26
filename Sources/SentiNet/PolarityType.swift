@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PolarityType{
+public enum PolarityType{
     case POSITIVE
     case NEGATIVE
     case NEUTRAL

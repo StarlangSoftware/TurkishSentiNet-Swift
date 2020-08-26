@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SentiNet : NSObject, XMLParserDelegate{
+public class SentiNet : NSObject, XMLParserDelegate{
     var __sentiSynSetList: [String: SentiSynSet] = [:]
     var value: String = ""
     var id: String = ""

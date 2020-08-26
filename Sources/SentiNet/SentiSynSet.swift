@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SentiSynSet{
+public class SentiSynSet{
     
     var id: String
     var positiveScore: Double
