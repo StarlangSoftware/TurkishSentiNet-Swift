@@ -4,19 +4,19 @@ import XCTest
 final class SentiNetTest: XCTestCase {
     var sentiNet : SentiNet = SentiNet()
     
-    override func setUp(){
+    override public func setUp(){
         self.sentiNet = SentiNet(fileName: "turkish_sentinet.xml")
     }
 
-    func testGetPositives() {
+    public func testGetPositives() {
         XCTAssertEqual(3100, self.sentiNet.getPositives().count)
     }
 
-    func testGetNegatives() {
+    public func testGetNegatives() {
         XCTAssertEqual(10191, self.sentiNet.getNegatives().count)
     }
 
-    func testGetNeutrals() {
+    public func testGetNeutrals() {
         XCTAssertEqual(63534, self.sentiNet.getNeutrals().count)
     }
 

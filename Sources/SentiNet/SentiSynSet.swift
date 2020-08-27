@@ -9,9 +9,9 @@ import Foundation
 
 public class SentiSynSet{
     
-    var id: String
-    var positiveScore: Double
-    var negativeScore: Double
+    private var id: String
+    private var positiveScore: Double
+    private var negativeScore: Double
 
     /**
     Constructor of SentiSynSet. Gets input id, positiveScore, negativeScore and sets all corresponding attributes.
@@ -32,7 +32,7 @@ public class SentiSynSet{
 
     - Returns: PositiveScore of the SentiSynSet.
     */
-    func getPositiveScore() -> Double{
+    public func getPositiveScore() -> Double{
         return self.positiveScore
     }
 
@@ -41,7 +41,7 @@ public class SentiSynSet{
 
     - Returns: NegativeScore of the SentiSynSet.
     */
-    func getNegativeScore() -> Double{
+    public func getNegativeScore() -> Double{
         return self.negativeScore
     }
 
@@ -50,7 +50,7 @@ public class SentiSynSet{
 
     - Returns: Id of the SentiSynSet.
     */
-    func getId() -> String{
+    public func getId() -> String{
         return self.id
     }
 
@@ -61,7 +61,7 @@ public class SentiSynSet{
 
     - Returns: PolarityType of the sentiSynSet.
     */
-    func getPolarity() -> PolarityType{
+    public func getPolarity() -> PolarityType{
         if self.positiveScore > self.negativeScore{
             return PolarityType.POSITIVE
         } else if self.positiveScore < self.negativeScore{

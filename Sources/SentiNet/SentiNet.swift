@@ -8,12 +8,12 @@
 import Foundation
 
 public class SentiNet : NSObject, XMLParserDelegate{
-    var __sentiSynSetList: [String: SentiSynSet] = [:]
-    var value: String = ""
-    var id: String = ""
-    var pScore: Double = 0.0
-    var nScore: Double = 0.0
-    var parser: XMLParser = XMLParser()
+    private var __sentiSynSetList: [String: SentiSynSet] = [:]
+    private var value: String = ""
+    private var id: String = ""
+    private var pScore: Double = 0.0
+    private var nScore: Double = 0.0
+    private var parser: XMLParser = XMLParser()
 
     override init(){
     }
@@ -65,7 +65,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
 
     - Returns: SentiSynSet with the given id.
     */
-    func getSentiSynSet(_id: String) -> SentiSynSet{
+    public func getSentiSynSet(_id: String) -> SentiSynSet{
         return self.__sentiSynSetList[_id]!
     }
 
@@ -74,7 +74,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
 
     - Parameter sentiSynSet : SentiSynSet to be added
     */
-    func addSentiSynSet(sentiSynSet: SentiSynSet){
+    public func addSentiSynSet(sentiSynSet: SentiSynSet){
         self.__sentiSynSetList[sentiSynSet.getId()] = sentiSynSet
     }
 
@@ -83,7 +83,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
 
     - Parameter sentiSynSet : SentiSynSet to be removed
     */
-    func removeSentiSynSet(sentiSynSet: SentiSynSet){
+    public func removeSentiSynSet(sentiSynSet: SentiSynSet){
         self.__sentiSynSetList[sentiSynSet.getId()] = nil
     }
 
@@ -95,7 +95,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
 
     - Returns: A list of id having polarityType polarityType.
     */
-    func getPolarity(polarityType: PolarityType) -> [String]{
+    private func getPolarity(polarityType: PolarityType) -> [String]{
         var result : [String] = []
         for sentiSynSet in self.__sentiSynSetList.values{
             if sentiSynSet.getPolarity() == polarityType{
@@ -110,7 +110,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
 
     - Returns: A list of ids of all positive SentiSynSets.
     */
-    func getPositives() -> [String]{
+    public func getPositives() -> [String]{
         return self.getPolarity(polarityType: PolarityType.POSITIVE)
     }
 
@@ -119,7 +119,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
 
     - Returns: A list of ids of all negative SentiSynSets.
     */
-    func getNegatives() -> [String]{
+    public func getNegatives() -> [String]{
         return self.getPolarity(polarityType: PolarityType.NEGATIVE)
     }
 
@@ -128,7 +128,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
 
     - Returns: A list of ids of all neutral SentiSynSets.
     */
-    func getNeutrals() -> [String]{
+    public func getNeutrals() -> [String]{
         return self.getPolarity(polarityType: PolarityType.NEUTRAL)
     }
 
