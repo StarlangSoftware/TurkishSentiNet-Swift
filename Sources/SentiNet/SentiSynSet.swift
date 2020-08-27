@@ -21,7 +21,7 @@ public class SentiSynSet{
         - positiveScore : Positive score of the SentiSynSet.
         - negativeScore : Negative score of the SentiSynSet.
     */
-    init(_id: String, positiveScore: Double, negativeScore: Double){
+    public init(_id: String, positiveScore: Double, negativeScore: Double){
         self.id = _id
         self.positiveScore = positiveScore
         self.negativeScore = negativeScore

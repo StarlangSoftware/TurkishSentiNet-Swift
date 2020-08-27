@@ -22,7 +22,7 @@ public class SentiNet : NSObject, XMLParserDelegate{
     Constructor of Turkish SentiNet. Reads the turkish_sentinet.xml file from the resources directory. For each
     sentiSynSet read, it adds it to the sentiSynSetList.
     */
-    init(fileName: String){
+    public init(fileName: String){
         let thisSourceFile = URL(fileURLWithPath: #file)
         let thisDirectory = thisSourceFile.deletingLastPathComponent()
         let url = thisDirectory.appendingPathComponent(fileName)
