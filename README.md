@@ -40,3 +40,33 @@ Result: The imported project is listed in the Project Explorer view and files ar
 **From IDE**
 
 After being done with the downloading and opening project, select **Build** option from **Product** menu. After compilation process, user can run TurkishSentiNet-Swift.
+
+Detailed Description
+============
+
++ [SentiNet](#sentinet)
++ [SentiSynSet](#sentisynset)
+
+## SentiNet
+
+Duygu sözlüğünü yüklemek için
+
+	a = SentiNet(fileName: "turkish_sentinet.xml")
+
+Belirli bir synsete ait duygu synsetini elde etmek için
+
+	func getSentiSynSet(_id: String) -> SentiSynSet
+
+## SentiSynSet
+
+Bir SentiSynset elimizdeyken onun pozitif skorunu
+
+	func getPositiveScore() -> Double
+
+negatif skorunu
+
+	func getNegativeScore() -> Double
+
+polaritysini
+
+	func getPolarity() -> PolarityType
