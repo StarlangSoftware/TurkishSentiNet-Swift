@@ -5,7 +5,7 @@ final class SentiLiteralNetTest: XCTestCase {
     var sentiNet : SentiLiteralNet = SentiLiteralNet()
     
     override public func setUp(){
-        self.sentiNet = SentiLiteralNet(fileName: "turkish_sentiliteralnet.xml")
+        self.sentiNet = SentiLiteralNet()
     }
 
     public func testGetPositives() {

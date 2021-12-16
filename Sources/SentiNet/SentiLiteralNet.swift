@@ -16,6 +16,11 @@ public class SentiLiteralNet : NSObject, XMLParserDelegate{
     private var parser: XMLParser = XMLParser()
 
     override init(){
+        let url = Bundle.module.url(forResource: "turkish_sentiliteralnet", withExtension: "xml")
+        parser = XMLParser(contentsOf: url!)!
+        super.init()
+        parser.delegate = self
+        parser.parse()
     }
     
     /**
@@ -23,10 +28,8 @@ public class SentiLiteralNet : NSObject, XMLParserDelegate{
     sentiSynSet read, it adds it to the sentiSynSetList.
     */
     public init(fileName: String){
-        let thisSourceFile = URL(fileURLWithPath: #file)
-        let thisDirectory = thisSourceFile.deletingLastPathComponent()
-        let url = thisDirectory.appendingPathComponent(fileName)
-        parser = XMLParser(contentsOf: url)!
+        let url = Bundle.module.url(forResource: fileName, withExtension: "xml")
+        parser = XMLParser(contentsOf: url!)!
         super.init()
         parser.delegate = self
         parser.parse()
