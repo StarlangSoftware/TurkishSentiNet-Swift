@@ -15,6 +15,10 @@ public class SentiLiteralNet : NSObject, XMLParserDelegate{
     private var nScore: Double = 0.0
     private var parser: XMLParser = XMLParser()
 
+    /**
+     Constructor of Turkish SentiNet. Reads the turkish_sentinet.xml file from the resources directory. For each
+     sentiLiteral read, it adds it to the sentiLiteralList.
+     */
     override init(){
         let url = Bundle.module.url(forResource: "turkish_sentiliteralnet", withExtension: "xml")
         parser = XMLParser(contentsOf: url!)!
@@ -23,10 +27,9 @@ public class SentiLiteralNet : NSObject, XMLParserDelegate{
         parser.parse()
     }
     
-    /**
-    Constructor of Turkish SentiNet. Reads the turkish_sentinet.xml file from the resources directory. For each
-    sentiSynSet read, it adds it to the sentiSynSetList.
-    */
+    /// Another constructor of Turkish SentiLiteralNet. Reads the domain sentiliteralnet file from the resources directory. For each
+    /// sentiLiteral read, it adds it to the sentiLiteralList.
+    /// - Parameter fileName: Name of the file that contains the domain SentiLiteralNet.
     public init(fileName: String){
         let url = Bundle.module.url(forResource: fileName, withExtension: "xml")
         parser = XMLParser(contentsOf: url!)!
@@ -35,6 +38,13 @@ public class SentiLiteralNet : NSObject, XMLParserDelegate{
         parser.parse()
     }
     
+    /// Xml parser method called at the start of the element.
+    /// - Parameters:
+    ///   - parser: Current parser
+    ///   - elementName: Name of the element
+    ///   - namespaceURI: -
+    ///   - qName: -
+    ///   - attributeDict: Attribute list of the element
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if (elementName == "NAME") {
             value = ""
@@ -45,10 +55,20 @@ public class SentiLiteralNet : NSObject, XMLParserDelegate{
         }
     }
     
+    /// Xml parser method for text between elements.
+    /// - Parameters:
+    ///   - parser: Current parser
+    ///   - string: Texr to be processed.
     public func parser(_ parser: XMLParser, foundCharacters string: String){
         value = value + string
     }
     
+    /// Xml parser method called at the end of the element.
+    /// - Parameters:
+    ///   - parser: Current parser
+    ///   - elementName: Name of the element
+    ///   - namespaceURI: -
+    ///   - qName: -
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
         if (elementName == "WORD"){
             self.__sentiLiteralList[name] = SentiLiteral(_name: name, positiveScore: pScore, negativeScore: nScore)
